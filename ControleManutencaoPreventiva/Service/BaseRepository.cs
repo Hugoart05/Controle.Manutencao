@@ -13,7 +13,7 @@ namespace ControleManutencaoPreventiva.Service
         {
             _conn = conn;
         }
-        public List<T> PegarTodos()
+        public virtual List<T> PegarTodos()
         {
             try
             {

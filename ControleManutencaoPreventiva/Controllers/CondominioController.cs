@@ -32,7 +32,7 @@ namespace ControleManutencaoPreventiva.Controllers
             
         }
 
-        [HttpGet("datacondominio")]
+        [HttpGet("/datacondominio")]
         public async Task<IActionResult> TodosDadosRelacionados(int id)
         {
             var condominio = _condominio.PegarPorId(id);
@@ -44,9 +44,22 @@ namespace ControleManutencaoPreventiva.Controllers
             return Ok(condominio);
         }
 
-        public   Adicionar()
+        [HttpPost("/adicionar")]
+        public MessageViewModel Adicionar([FromBody] Condominio condominio)
         {
+            var message = new MessageViewModel();
+            
+            if (ModelState.IsValid)
+            {
+                _condominio.Create(condominio);
+                message.Message = "Condominio adicionado com sucess!";
+                message.StatusCode = 200;
+                return message;
+            }
 
+            message.Message = "Preencha os campos corretamente!";
+            message.StatusCode = 222;
+            return message;
         }
     }
 }
