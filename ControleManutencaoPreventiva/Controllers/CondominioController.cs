@@ -14,7 +14,10 @@ namespace ControleManutencaoPreventiva.Controllers
         {
             _condominio = condominio;
         }
-
+        public ActionResult Index()
+        {
+            return View();
+        }
         public List<HomeViewModel> PegarTodos()
         {
             var listaDeCondominio = _condominio.PegarTodos();

@@ -1,3 +1,4 @@
+using ControleManutencaoPreventiva.Context;
 using ControleManutencaoPreventiva.Models;
 using ControleManutencaoPreventiva.Service;
 using ControleManutencaoPreventiva.Service.Interface;
@@ -6,6 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddDbContext<PrevContext>();
 builder.Services.AddScoped<ICondominio, CondominioRepository>();
 builder.Services.AddScoped<IEquipamento, EquipamentoRepository>();
 builder.Services.AddScoped<IEndereco, EnderecoRepository>();

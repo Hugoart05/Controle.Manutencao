@@ -17,17 +17,28 @@ namespace ControleManutencaoPreventiva.Controllers
         public IActionResult PegarTodos(int id)
         {
             var equipamentos = _equipamento.EquipamentosCondominio(id);
-            if(equipamentos == null)
+            if (equipamentos == null)
             {
                 return NotFound();
             }
 
             return Ok(equipamentos);
         }
+
+        public IActionResult Adicionar([FromBody] Equipamento equipamento)
+        {
+            if (ModelState.IsValid)
+            {
+                _equipamento.Create(equipamento);
+                return Ok(new { message = "Adicionado com sucesso!" });
+            }
+            return BadRequest(new { message = "Adicionado com sucesso!" });
+        }
+
         public IActionResult Deletar(int id)
         {
             var equipamento = _equipamento.PegarPorId(id);
-            if(equipamento == null)
+            if (equipamento == null)
             {
                 return Ok(new { message = "Deletado com sucesso!" });
             }
@@ -36,22 +47,12 @@ namespace ControleManutencaoPreventiva.Controllers
         public IActionResult Detalhes(int id)
         {
             var equipamento = _equipamento.PegarPorId(id);
-            if( equipamento == null)
+            if (equipamento == null)
             {
                 return BadRequest(new { message = "Equipamento inesistente!" });
 
             }
             return Ok(equipamento);
-        }
-
-        public IActionResult Adicionar([FromBody] Equipamento equipamento)
-        {
-            if(ModelState.IsValid)
-            {
-                _equipamento.Create(equipamento);
-                return Ok(new { message = "Adicionado com sucesso!" });
-            }
-            return BadRequest(new { message = "Adicionado com sucesso!" });
         }
 
         public IActionResult Atualizar(Equipamento equipamento)

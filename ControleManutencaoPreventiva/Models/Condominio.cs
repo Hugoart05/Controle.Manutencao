@@ -11,6 +11,7 @@ namespace ControleManutencaoPreventiva.Models
 
         public int EnderecoId {  get; set; }
         public Endereco Endereco { get; set; }
+        
 
         public List<Equipamento> Equipamentos { get; set; }
     }

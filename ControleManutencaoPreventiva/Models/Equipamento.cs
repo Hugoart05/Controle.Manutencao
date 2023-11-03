@@ -7,6 +7,8 @@
         public string? Descricao { get; set; }
         public List<RangeIps> Ips { get; set; }
 
+        public DateTime UltimaPreventiva { get; set; }
+        public int DiasParaPreventiva { get; set; }
 
         public int CondominioId { get; set; }
         public Condominio Condominio { get; set; }
