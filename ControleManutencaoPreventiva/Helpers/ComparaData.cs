@@ -1,6 +1,6 @@
-﻿namespace ControleManutencaoPreventiva.Service
+﻿namespace ControleManutencaoPreventiva.Helpers
 {
-    public class ComparaData
+    public class ComparaData : IComparaData
     {
         public int CountaDiasPreventiva(DateTime data)
         {

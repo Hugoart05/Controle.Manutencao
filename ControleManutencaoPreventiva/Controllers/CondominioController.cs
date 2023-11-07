@@ -43,7 +43,7 @@ namespace ControleManutencaoPreventiva.Controllers
             {
                 return NotFound();
             }
-
+            
             return Ok(condominio);
         }
 
