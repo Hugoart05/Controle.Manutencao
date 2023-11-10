@@ -16,26 +16,12 @@ namespace ControleManutencaoPreventiva.Controllers
         }
         public ActionResult Index()
         {
-            return View();
+            var condominios = _condominio.PegarTodos();
+            return View(condominios);
         }
-        public List<HomeViewModel> PegarTodos()
-        {
-            var listaDeCondominio = _condominio.PegarTodos();
-            var viewModel = new List<HomeViewModel>();
-            foreach(var item in listaDeCondominio)
-            {
-                var novoItem = new HomeViewModel
-                {
-                    Id = item.Id,
-                    Name = item.Nome,
-                };
-                viewModel.Add(novoItem);
-            }
-            return viewModel;
-            
-        }
+        
 
-        [HttpGet("/datacondominio")]
+        [HttpGet("/condominio")]
         public async Task<IActionResult> TodosDadosRelacionados(int id)
         {
             var condominio = _condominio.PegarPorId(id);
@@ -47,22 +33,10 @@ namespace ControleManutencaoPreventiva.Controllers
             return Ok(condominio);
         }
 
-        [HttpPost("/adicionar")]
-        public MessageViewModel Adicionar([FromBody] Condominio condominio)
+        [HttpPost]
+        public ActionResult Adicionar(Condominio condominio)
         {
-            var message = new MessageViewModel();
-            
-            if (ModelState.IsValid)
-            {
-                _condominio.Create(condominio);
-                message.Message = "Condominio adicionado com sucess!";
-                message.StatusCode = 200;
-                return message;
-            }
-
-            message.Message = "Preencha os campos corretamente!";
-            message.StatusCode = 222;
-            return message;
+            return RedirectToAction("Index");
         }
     }
 }

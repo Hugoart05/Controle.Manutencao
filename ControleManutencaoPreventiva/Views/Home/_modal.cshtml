@@ -1,0 +1,71 @@
+﻿@model Condominio
+<style>
+    .buttons {
+        gap: 8px;
+        >button
+
+    {
+        background: linear-gradient(to left, #5927BF, #5F10FF);
+        color: white;
+    }
+
+    > input {
+        max-width: 300px;
+        font-style: italic;
+        padding-left: 20px
+    }
+
+    }
+
+    .modal-body {
+    }
+
+    .formulario {
+        width: 100%;
+    }
+</style>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Cadastrar condominio</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form asp-controller="Condominio" asp-action="Adicionar">
+                    <label>
+                        Nome
+                        <input class=" form-control" asp-for="Nome" />
+                    </label>
+                    <label>
+                        Endereco
+                    </label>
+                    <label>
+                        Rua:
+                        <input class="form-control" asp-for="Endereco.Rua" type="text" placeholder="Nome da rua" />
+                    </label>
+                    <label>
+                        Numero:
+                        <input class="form-control" asp-for="Endereco.Numero" type="text" placeholder="Numero" />
+                    </label>
+                    <label>
+                        Bairro:
+                        <input class="form-control" asp-for="Endereco.Bairro" type="text" placeholder="Nome do bairro" />
+                    </label>
+                    <label>
+                        Rua:
+                        <input class="form-control" asp-for="Endereco.Cidade" type="text" placeholder="Nome da rua" />
+                    </label>
+                    <button class="btn btn-primary">Cadastrar condominio</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+
+    </script>
+}
